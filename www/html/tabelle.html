@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- WebEnginnering WS17/18: Burak Günaydin (853872) & Eric Wenzke (860492) -->
+<html>
+
+<head>
+    <!-- Ohne den meta Tag klappt die Mobile Skalierung nicht -->
+    <meta name="viewport" content="initial-scale=1">
+    <meta charset="utf-8" />
+    <title>Coffee Stats</title>
+    <link rel="stylesheet" type="text/css" href="../css/master.css">
+    <script src="../js/localstorage.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="outerbox">
+        <div class="innerbox">
+            <nav>
+                <img id="header-icon" src="../pics/coffeestats_logo_v2.png">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="formular.html">Formular</a></li>
+                    <li id="active-nav-link"><a href="tabelle.html">Tabelle</a></li>
+                </ul>
+            </nav>
+            <div class="contentbox">
+                <article id="shadow">
+                    <h1>Zuletzt eingetragene Werte</h1>
+                    <p>
+                        In dieser Übersicht befinden sich aktuelle Werte, die dem Formular übergeben worden sind. In wirklichkeit handelt es sich bei der akutellen Ansicht aber nur um ein Dummy Datensatz.
+                    </p>
+                    <br>
+                    <button onclick="randomGenerate();" type="submit">Zufallsgenerator</button>
+                    <br><br>
+                    <table id="results">
+                        <tr>
+                            <th id="border-top-left"></th>
+                            <th>E-Mail</th>
+                            <th>Datum</th>
+                            <th>Form</th>
+                            <th id="border-top-right">Dosis</th>
+                        </tr>
+                    </table><br>
+                    <button onclick="deleteStorage();" type="submit">Ausgewählte Löschen</button>
+                    <button onclick="clearStorage();" type="reset">Alle Löschen</button>
+                </article>
+
+            </div>
+            <footer>
+                <p>
+                    WebEnginnering WS17/18: Burak Günaydin (853872) &amp; Eric Wenzke (860492)
+                </p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>

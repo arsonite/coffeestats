@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- WebEnginnering WS17/18: Burak Günaydin (853872) & Eric Wenzke (860492) -->
+<html>
+
+<head>
+    <!-- Ohne den meta Tag klappt die Mobile Skalierung nicht -->
+    <meta name="viewport" content="initial-scale=1">
+    <meta charset="utf-8" />
+    <title>Coffee Stats</title>
+    <link rel="stylesheet" type="text/css" href="../css/master.css">
+    <script src="../js/currentdate.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="outerbox">
+        <div class="innerbox">
+            <nav>
+                <img id="header-icon" src="../pics/coffeestats_logo_v2.png">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li id="active-nav-link"><a href="./formular.html">Formular</a></li>
+                    <li><a href="./tabelle.html">Tabelle</a></li>
+                </ul>
+            </nav>
+            <div class="contentbox" id="fu">
+                <article id="shadow">
+                    <h1>Koffeinmenge eintragen</h1>
+                    <p>
+                        Hier können Sie ihren Kaffeekonsum dokumentieren. Ihre Werte finden Sie dann in der Tabelle wieder. Ihre E-Adresse wird dazu benutzt, um Sie eindeutig zu identifizieren. Es ist ihnen überlassen ob Sie eintragen was genau getrunken oder konsumiert worden ist. Unter dem Formular finden Sie eine Tabelle mit den üblichen Koffeingehalt von Getränken und Nahrungsmitteln.
+                    </p>
+                    <br>
+                    <p><u>Was bedeutet hinzufügen und überschreiben</u>?</p>
+                    <p>
+                        <b>Hinzufügen</b> addiert den Wert den Sie bei Dosis eingetragen haben zu den Werten die für Heute existieren.
+                    </p>
+                    <p>
+                        Mit <b>Überschreiben</b> können Sie einen Wert für einen Tag komplett neu anlegen. Alle ihr Daten die Sie für den Tag eingetragen haben gehen damit verloren und werden durch diesen ersetzt.
+                    </p>
+                    <br>
+                    <h2>Wert eintragen</h2>
+
+                    <form action="./tabelle.html" method="get">
+                        <p>
+                            <label id="emailfield">E-Mail: </label>
+                            <input type="email" name="email" placeholder="sample@gmail.com" required>
+                        </p>
+                        <p>
+                            <label>Form: </label>
+                            <input autocomplete="off" placeholder="Getränk, Schokolade" type="text" name="form" />
+                        </p>
+                        <p>
+                            <label>Dosis: </label>
+                            <input type="number" name="dosis" placeholder="100" required>mg
+                        </p>
+                        <date-util format="dd-mm-yyyy"></date-util>
+                        <p>
+                            <label>Datum: </label>
+                            <input type="date" name="date" id="today" required>
+                        </p>
+                        <p>
+                            <input type="radio" name="dosis" value="add" checked> hinzufügen<br>
+                            <input type="radio" name="dosis" value="overwrite"> überschreiben<br>
+                        </p>
+                        <p>
+                            <button type="reset">Reset</button>
+                            <button type="submit">Senden</button>
+                        </p>
+                    </form>
+                    <br>
+                    <h3>Was hat wie viel Koffein?</h3>
+                    <table>
+                        <tr>
+                            <th id="border-top-left">Getränk</th>
+                            <th id="border-top-right">pro 100 ml</th>
+                        </tr>
+                        <tr>
+                            <td>Filterkaffe</td>
+                            <td>55mg</td>
+                        </tr>
+                        <tr>
+                            <td>Espresso</td>
+                            <td>130mg</td>
+                        </tr>
+                        <tr>
+                            <td>Instantkaffee</td>
+                            <td>40mg</td>
+                        </tr>
+                        <tr>
+                            <td>Schwarzer Tee</td>
+                            <td>20mg</td>
+                        </tr>
+                        <tr>
+                            <td>Grüner Tee</td>
+                            <td>20mg</td>
+                        </tr>
+                        <tr>
+                            <td>Coca-Cola</td>
+                            <td>10mg</td>
+                        </tr>
+                        <tr>
+                            <td>Fritz Kola</td>
+                            <td>25mg</td>
+                        </tr>
+                        <tr>
+                            <td>Club Mate</td>
+                            <td>20mg</td>
+                        </tr>
+                    </table>
+                </article>
+            </div>
+            <footer>
+                <p>
+                    WebEnginnering WS17/18: Burak Günaydin (853872) &amp; Eric Wenzke (860492)
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

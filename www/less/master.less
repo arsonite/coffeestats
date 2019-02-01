@@ -1,0 +1,394 @@
+/* 
+    WebEnginnering WS17/18:
+    Burak Günaydin (853872)
+    Eric Wenzke (860492)
+*/
+/* reset all padding & margin */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/*  ----- Body Aufbau -----
+outerbox(
+    innerbox(
+        nav()
+        contentbox(
+            article
+        )
+        footer()
+    )
+)
+*/
+
+/* --- Varibals --- */
+@primary-c: #5d4037;
+@primary-c-bright: #8b6b61;
+@heading-c: #151515;
+@text-c: #222;
+@link-c: brown;
+@footer-c: white;
+@b: 5px;
+@nb: 0px;
+@inner-shadow: inset 0px 0px 45px 7px rgba(0,0,0,0.1);
+@outer-shadow: 0px 0px 17px -4px rgba(0,0,0,0.15);
+
+/* --- Mixin --- */
+.h-style{
+    padding-bottom: 15px;
+    color: @heading-c;
+}
+.background-size(@bs){
+    -webkit-background-size: @bs;
+    -moz-background-size: @bs;
+    -o-background-size: @bs;
+    background-size: @bs;
+}
+.shadow(@s){
+    -webkit-box-shadow: @s;
+    -moz-box-shadow: @s;
+    box-shadow: @s;
+}
+.border-radius(@t, @b){
+    border-top-left-radius: @t;
+    border-top-right-radius: @t;
+    border-bottom-right-radius: @b;
+    border-bottom-left-radius: @b;
+}
+
+/* ---- Fonts & Color ---- */
+body{ font-family: Noto Sans, sans-serif; }
+
+article{
+    h1{ font-size: 160%; .h-style; }
+    h2{ font-size: 140%; .h-style; }
+    h3{ font-size: 130%; .h-style; }
+    h4{ font-size: 120%; .h-style; }
+    h5{ font-size: 110%; .h-style; }
+
+    p, ul, ol{
+        line-height: 1.7em;
+        color: @text-c;
+        padding-bottom: 5px;
+
+        b{ color: @primary-c; }
+        a{
+            text-decoration: none;
+            color: @link-c;
+        }
+        a:hover{ text-decoration: underline; }
+    }
+    th{ color: #fff; }
+}
+
+/* ----- body outerbox, innerbox ----- */
+body{ 
+    background: url("../pics/bg_blur.png") no-repeat center center fixed;
+    .background-size(cover);
+
+    .outerbox{
+        display: flex;
+        justify-content: center;
+    }
+    .innerbox{
+        display: flex;
+        max-width: 960px;
+        flex-direction: column;
+        background-color: #fff;
+        margin: 20px 0px;
+        .border-radius(@b + 2, @b + 2);
+    }
+}
+
+/* ----- Nav ----- */
+/*
+https://www.youtube.com/watch?v=2plKBskaKfY&t
+https://www.youtube.com/watch?v=8Ls7maJvjwQ
+*/
+nav{
+    display: flex;
+    padding: 0px 20px;
+    justify-content: space-between;
+    background-color: @primary-c;
+    .border-radius(@b, @nb);
+
+    ul{
+        display: flex;
+        list-style-type: none;
+
+        li{
+            margin-right: 3px;
+
+            a{
+                display: block;
+                color: #fff;
+                padding: 20px 10px 18px 10px;
+                text-align: center;
+                border-bottom: 2px solid @primary-c;
+                text-decoration: none;
+            }
+            a:hover{ border-bottom: 2px solid #fff; }
+        }
+    }
+}
+
+/* ----- contentbox, article, footer ----- */
+.contentbox{
+    border-left: 2px solid @primary-c;
+    border-right: 2px solid @primary-c;
+
+    article{ 
+        padding: 25px;
+        ul, ol{
+            padding-left: 25px;
+        }
+    }
+}
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    background-color: @primary-c;
+    .border-radius(@nb, @b);
+    padding: 0px 20px;
+
+    p{
+        color: @footer-c;
+        padding: 10px;
+    }
+}
+
+/* ----- Blog ----- */
+
+/* Allgemein */
+.blogpost{
+    .shadow(@outer-shadow);
+    background-color: #f7f7f7;
+    .border-radius(@nb, @b);
+    margin-bottom: 20px;
+    h3{
+        padding: 0px 10px;
+        a{ 
+            text-decoration: none;
+            color: @primary-c;
+        }   
+    }
+    img{
+        .border-radius(@b, @nb);
+        width: 100%;
+    }
+    p{ padding: 5px 10px; }
+}
+
+/* Anpassung für Home */
+.blogmodul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .blogpost{ width: 30%; }
+}
+
+/* Header Blogbeitrag */
+.pic-container{
+    display: flex;
+    height: 200px;
+    width: 100%;
+    justify-content: center;
+    .background-size(fill);
+    h1{
+        max-width: 80%;
+        text-align: center;
+        background-color: rgba(93,64,55,0.35);
+        color: aliceblue;
+        padding: 10px;
+        align-self: center;
+        .border-radius(@b, @b);
+    }
+}
+
+/* Anpassung Blogbeitrag*/
+.blog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .sidebar{
+        order: 1;
+        width: 30%;
+        border-left: 1px solid rgba(0,0,0,0.1);
+        padding: 0px 0px 0px 20px;
+        .blogpost{ width: 100%; }
+    }
+    .blog-article{
+        order: 0;
+        width: 65%;
+        width: 65%;
+    }
+}
+
+
+/* ----- IDs ----- */
+#shadow{ .shadow(@inner-shadow); }
+
+#header-icon{
+    height: 50px;
+    align-self: center;
+}
+
+#border-top-left{ border-top-left-radius: 5px; }
+#border-top-right{ border-top-right-radius: 5px; }
+
+#active-nav-link a{ border-bottom: 2px solid #fff; }
+
+#dummy{ background: url(../pics/dummy.jpg); }
+#psycho{ background: url(../pics/psychoaktiv.jpg); }
+#wirkung{ background: url(../pics/wirkung.jpg); }
+#nebenwirkung{ background: url(../pics/nebenwirkung.jpg); }
+
+/* ---- Tabelle ---- */
+/* https://www.w3schools.com/css/css_table.asp */
+table{ 
+    border-collapse: collapse;
+
+    th, td{
+        text-align: left;
+        padding: 8px 25px 8px 8px;
+    }
+    tr:nth-child(even){ background-color: #f2f2f2 }
+    th{ background-color: @primary-c-bright; }
+}
+
+/* ---- Formular ---- */
+/* https://www.w3schools.com/css/css_form.asp */
+input[type=email], input[type=text], input[type=number]{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    padding: 6px;
+    font-size: 100%;
+}
+
+button[type=submit], button[type=reset]{
+    color: white;
+    border: none;
+    padding: 13px 38px;
+    cursor: pointer;
+    font-weight: bold;
+    .border-radius(@b, @b);
+}
+
+input[type=radio]{ cursor: pointer; }
+
+button[type=submit]{ background-color: @primary-c-bright; }
+button[type=reset]{ background-color: crimson; }
+
+/* ---- Mobileanpassung ---- */
+@media screen and (max-width: 960px){
+    .outerbox{ 
+        margin: 0;
+        .innerbox{
+            margin: 0;
+            nav{ .border-radius(@nb, @nb); }
+            .contentbox{ max-width: 100%; }
+            footer{ .border-radius(@nb, @nb); }
+        }
+    }
+}
+
+@media screen and (max-width: 780px){
+    /* Blog */
+    .blog{
+        flex-direction: column;
+        .blog-article{ width: 90%; }
+        .sidebar{
+            margin:30px 20px 10px 0px;
+            border-left: 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            width: 95%;
+            display: flex;
+            flex-direction: row;
+            .blogpost{ margin: 10px 15px 0px 0px; }
+        }
+    }
+    /* Home */
+    .blogmodul{
+        flex-wrap: wrap;
+        .blogpost{
+            width: 280px;
+            margin-right: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px){
+    #border-top-left{ border-top-left-radius: 0; }
+    #border-top-right{ border-top-right-radius: 0; }
+    
+    button[type=submit], button[type=reset]{ 
+        .border-radius(@nb, @nb);
+        width: 80%;
+    }
+
+    .outerbox{
+        .innerbox{
+            nav{
+                display: block;
+                text-align: center;
+                align-content: center;
+
+                ul{ justify-content: center; }
+            }
+            .contentbox{
+                border-left: 0;
+                border-right: 0;
+                
+                table{
+                    display: flex;
+                    th, td{
+                        display: flex;
+                        text-align: left;
+                    }
+                }
+                /* Home */
+                .blogmodul{
+                    flex-wrap: nowrap;
+                    flex-direction: column;
+                    .blogpost{ width: 100%; }
+                }
+                /* Blog */
+                .blog{ 
+                    .sidebar{ 
+                        padding-left: 0px;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 280px){
+    .outerbox{
+        .innerbox{
+            font-size: 12px;
+            nav{
+                img{ display: none; }
+                ul{
+                    font-size: 12px;
+                    li{
+                        a{
+                            display: flex;
+                            padding: 5px;
+                        }
+                    }
+                }
+            }
+            footer{ font-size: 12px; }
+        }
+    }
+}
